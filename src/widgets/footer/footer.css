@@ -1,0 +1,12 @@
+.footer {
+  border-top: 1px solid black;
+}
+
+.footer__container {
+  padding: 1rem;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: center;
+}

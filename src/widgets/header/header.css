@@ -1,0 +1,23 @@
+.header {
+  border-bottom: 1px solid black;
+}
+.header__container {
+  padding: 1rem;
+}
+
+.header__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header__btn {
+  padding: 0.5rem;
+  border-radius: 4rem;
+}
