@@ -1,0 +1,115 @@
+/* Garage*/
+.controls__create,
+.controls__edit {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+.controls__input {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid black;
+}
+
+.controls__color {
+  cursor: pointer;
+}
+
+.controls__btn {
+  padding: 0.3rem 1rem;
+  border-radius: 0.3rem;
+  width: 9rem;
+}
+
+.controls__race {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.info__title {
+  margin-bottom: 1rem;
+}
+
+.garage__pagination {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pagination__btn {
+  padding: 0.3rem 1rem;
+  border-radius: 0.3rem;
+  width: 4rem;
+}
+
+.pagination__btn-prev {
+  margin-right: 1rem;
+}
+
+/* Track item LI*/
+
+.track__item {
+  padding: 1.5rem 0;
+  width: 100%;
+}
+
+.track__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.track__road {
+  display: flex;
+  align-items: center;
+  background-color: #525252;
+  height: 5rem;
+  border-bottom: 0.2rem solid black;
+  margin-left: 0.5rem;
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+.track__road::after {
+  content: '';
+  position: absolute;
+  width: 4rem;
+  height: 6rem;
+  background-image: url(../../assets/icon/flag.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 0;
+  right: 5rem;
+}
+.car__img {
+  width: 7rem;
+  height: 7rem;
+  position: absolute;
+  top: 0;
+}
+
+.car__name {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.info__btn {
+  border-radius: 0.3rem;
+  width: 3rem;
+}
+
+.info__btn-delete {
+  margin-left: 1rem;
+}
+
+.road__btn {
+  border-radius: 0.3rem;
+  width: 3rem;
+}

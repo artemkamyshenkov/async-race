@@ -2,7 +2,7 @@
   border-bottom: 1px solid black;
 }
 .header__container {
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .header__wrapper {
