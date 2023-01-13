@@ -1,4 +1,4 @@
-import { CreateCar } from '@src/types/types';
+import { CreateCar, WinnersCar } from '@src/types/types';
 
 const baseURL = 'http://127.0.0.1:3000';
 const garage = `${baseURL}/garage`;
@@ -74,12 +74,77 @@ async function getSortWinners(sort: string, order: string) {
   return '';
 }
 
-async function getWinners(page: number, sort: string, order: string, limit = 10) {
-  const response = await fetch(`${winners}?_page=${page}&_limit=${limit}${getSortWinners(sort, order)}`);
+async function getWinners(page: number, sort?: string, order?: string, limit = 10) {
+  const response = await fetch(
+    `${winners}?_page=${page}&_limit=${limit}${getSortWinners(sort as string, order as string)}`
+  );
   const items = await response.json();
-  return items;
+  return {
+    items: await Promise.all(items.map(async (winner: WinnersCar) => ({ ...winner, car: await getCar(winner.id) }))),
+    count: response.headers.get('X-Total-Count'),
+  };
 }
 
+async function getWinner(id: number) {
+  const response = await fetch(`${winners}/${id}`);
+  const item = await response.json();
+  return item;
+}
+
+async function getWinnerStatus(id: number) {
+  const response = await (await fetch(`${winners}/${id}`)).status;
+  return response;
+}
+
+async function deleteWinner(id: number) {
+  const response = await fetch(`${winners}/${id}`, {
+    method: 'DELETE',
+  });
+  const item = response.json();
+  return item;
+}
+
+async function createWinner(body: WinnersCar) {
+  const response = await fetch(`${winners}`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+  const createdItem = response.json();
+  return createdItem;
+}
+
+async function updateWinner(id: number, body: WinnersCar) {
+  const response = await fetch(`${winners}/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+  const updatedItem = response.json();
+  return updatedItem;
+}
+
+async function saveWinner(id: number, time: number) {
+  const status = await getWinnerStatus(id);
+  if (status === 404) {
+    await createWinner({
+      id,
+      wins: 1,
+      time,
+    });
+  } else {
+    const winner = await getWinner(id);
+    await updateWinner(id, {
+      id,
+      wins: winner.wins + 1,
+      time: time < winner.time ? time : winner.time,
+    });
+  }
+}
 export {
   getCars,
   getCar,
@@ -91,4 +156,9 @@ export {
   driveCar,
   getSortWinners,
   getWinners,
+  getWinner,
+  getWinnerStatus,
+  deleteWinner,
+  createWinner,
+  saveWinner,
 };

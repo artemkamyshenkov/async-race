@@ -2,7 +2,8 @@ import '@src/index.css';
 import '@src/assets/styles/normalize.css';
 import { createBrowserHistory } from 'history';
 import type { Location } from 'history';
-import garagePage from '../pages/garage/garage';
+import { renderCars } from '@src/race/race';
+import { garagePage } from '../pages/garage/garage';
 import winnersPage from '../pages/winners/winners';
 
 export default function router() {
@@ -18,6 +19,7 @@ export default function router() {
 
     btnGarage?.addEventListener('click', () => {
       history.push('/');
+      renderCars();
     });
   }
 

@@ -2,7 +2,7 @@ import createDomElement from '@src/helpers/createDomElement';
 import { CreateCar } from '@src/types/types';
 import './garage.css';
 
-export default function garagePage() {
+export function garagePage() {
   const garage = document.createElement('section');
   garage.className = 'garage';
   const garageWrapper = createDomElement(garage, 'div', 'garage__wrapper');
@@ -18,7 +18,9 @@ export default function garagePage() {
     { key: 'type', value: 'color' },
     { key: 'value', value: '#000000' },
   ]);
-  createDomElement(constolsCreate, 'button', 'controls__btn create__btn', 'Create car');
+  createDomElement(constolsCreate, 'button', 'controls__btn create__btn', 'Create car', [
+    { key: 'type', value: 'button' },
+  ]);
 
   const controlsEdit = createDomElement(garageControls, 'form', 'controls__edit');
   createDomElement(controlsEdit, 'input', 'controls__input edit__input', '', [
@@ -42,7 +44,7 @@ export default function garagePage() {
 
   const garageInfo = createDomElement(garageWrapper, 'div', 'garage__info');
   const infoTitle = createDomElement(garageInfo, 'h2', 'info__title', 'Cars: ');
-  createDomElement(infoTitle, 'span', 'info__count', '5');
+  createDomElement(infoTitle, 'span', 'info__count');
 
   const garagePagination = createDomElement(garageInfo, 'div', 'garage__pagination');
   const paginationTitle = createDomElement(garagePagination, 'h2', 'pagination__title', 'Page: ');
@@ -53,13 +55,11 @@ export default function garagePage() {
   createDomElement(paginationButtons, 'button', 'pagination__btn pagination__btn-prev', 'prev');
   createDomElement(paginationButtons, 'button', 'pagination__btn pagination__btn-next', 'next');
 
-  const trackItems = createDomElement(garageWrapper, 'ul', 'track__items track');
-  // trackItems.appendChild(createCar(car));
-
+  createDomElement(garageWrapper, 'ul', 'track__items track');
   return garage;
 }
 
-export function createCar(car: CreateCar) {
+export function renderCar(car: CreateCar) {
   const trackItem = document.createElement('li');
   trackItem.className = 'track__item';
   const trackInfo = createDomElement(trackItem, 'div', 'track__info');
