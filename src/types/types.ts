@@ -9,3 +9,9 @@ export type CreateCar = {
   color: string;
   isEngineStarted?: boolean;
 };
+
+export type WinnersCar = {
+  id: number;
+  wins: number;
+  time: number;
+};

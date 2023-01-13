@@ -49,6 +49,9 @@ const baseConfig = {
       extensions: ['js', 'ts'],
     }),
   ],
+  experiments: {
+    topLevelAwait: true,
+  },
 };
 
 module.exports = ({ mode }) => {
