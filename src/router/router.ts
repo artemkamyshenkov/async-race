@@ -2,7 +2,7 @@ import '@src/index.css';
 import '@src/assets/styles/normalize.css';
 import { createBrowserHistory } from 'history';
 import type { Location } from 'history';
-import { renderCars } from '@src/race/race';
+import renderCars from '@src/race/cars/cars';
 import { garagePage } from '../pages/garage/garage';
 import winnersPage from '../pages/winners/winners';
 

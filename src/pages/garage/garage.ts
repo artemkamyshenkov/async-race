@@ -19,7 +19,7 @@ export function garagePage() {
     { key: 'value', value: '#000000' },
   ]);
   createDomElement(constolsCreate, 'button', 'controls__btn create__btn', 'Create car', [
-    { key: 'type', value: 'button' },
+    { key: 'type', value: 'submit' },
   ]);
 
   const controlsEdit = createDomElement(garageControls, 'form', 'controls__edit');
@@ -43,7 +43,7 @@ export function garagePage() {
   createDomElement(controlsRace, 'button', 'controls__btn btn__generate', 'Generate Cars');
 
   const garageInfo = createDomElement(garageWrapper, 'div', 'garage__info');
-  const infoTitle = createDomElement(garageInfo, 'h2', 'info__title', 'Cars: ');
+  const infoTitle = createDomElement(garageInfo, 'h2', 'info__title', 'Total cars: ');
   createDomElement(infoTitle, 'span', 'info__count');
 
   const garagePagination = createDomElement(garageInfo, 'div', 'garage__pagination');
