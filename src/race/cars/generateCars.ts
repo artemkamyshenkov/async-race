@@ -9,7 +9,6 @@ export default function getRandomCars() {
   randomBtn?.addEventListener('click', async () => {
     randomBtn.disabled = true;
     const randomCars = getRandomCar();
-    console.log(randomCars);
     await Promise.all(
       randomCars.map(async (car) => {
         await createCar(car);

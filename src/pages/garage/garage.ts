@@ -39,7 +39,7 @@ export function garagePage() {
 
   const controlsRace = createDomElement(garageControls, 'div', 'controls__race');
   createDomElement(controlsRace, 'button', 'controls__btn btn__race', 'Race');
-  createDomElement(controlsRace, 'button', 'controls__btn btn__reset', 'Reset');
+  createDomElement(controlsRace, 'button', 'controls__btn btn__reset', 'Reset', [{ key: 'disabled', value: '' }]);
   createDomElement(controlsRace, 'button', 'controls__btn btn__generate', 'Generate Cars');
 
   const garageInfo = createDomElement(garageWrapper, 'div', 'garage__info');
@@ -62,6 +62,7 @@ export function garagePage() {
 export function renderCar(car: CreateCar) {
   const trackItem = document.createElement('li');
   trackItem.className = 'track__item';
+
   const trackInfo = createDomElement(trackItem, 'div', 'track__info');
   createDomElement(trackInfo, 'p', 'car__name', `${car.name}`);
 
@@ -82,8 +83,11 @@ export function renderCar(car: CreateCar) {
     { key: 'id', value: `road__btn-stop-${car.id}` },
     { key: `${!car.isEngineStarted ? 'disabled' : 'stop'}`, value: '' },
   ]);
+  createDomElement(trackRoad, 'div', 'track__flag', '', [{ key: 'id', value: `flag-${car.id}` }]);
 
-  const trackAnimation = createDomElement(trackRoad, 'div', 'track__animation');
+  const trackAnimation = createDomElement(trackRoad, 'div', 'track__animation', '', [
+    { key: 'id', value: `car-${car.id}` },
+  ]);
   trackAnimation.innerHTML = `${renderCarImg(car.color)}`;
 
   return trackItem;
