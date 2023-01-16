@@ -91,7 +91,7 @@
   border-radius: 0.5rem;
 }
 
-.track__road::after {
+.track__flag {
   content: '';
   position: absolute;
   width: 4rem;
@@ -103,7 +103,7 @@
   top: 0;
   right: 5rem;
 }
-.car__img {
+.track__animation {
   width: 7rem;
   height: 7rem;
   position: absolute;

@@ -1,4 +1,4 @@
-import { CreateCar, WinnersCar } from '@src/types/types';
+import { CreateCar, Winners } from '@src/types/types';
 
 const baseURL = 'http://127.0.0.1:3000';
 const garage = `${baseURL}/garage`;
@@ -51,19 +51,25 @@ async function updateCar(id: number, body: CreateCar) {
 }
 
 async function startEngine(id: number) {
-  const response = await fetch(`${engine}?id=${id}&status=started`);
+  const response = await fetch(`${engine}?id=${id}&status=started`, {
+    method: 'PATCH',
+  });
   const isStartted = response.json();
   return isStartted;
 }
 
 async function stopEngine(id: number) {
-  const response = await fetch(`${engine}?id=${id}&status=stopped`);
+  const response = await fetch(`${engine}?id=${id}&status=stopped`, {
+    method: 'PATCH',
+  });
   const isStopped = response.json();
   return isStopped;
 }
 
 async function driveCar(id: number) {
-  const response = await fetch(`${engine}?id=${id}&status=drive`).catch();
+  const response = await fetch(`${engine}?id=${id}&status=drive`, {
+    method: 'PATCH',
+  }).catch();
   return response.status !== 200 ? { succees: false } : { ...(await response.json()) };
 }
 
@@ -80,7 +86,7 @@ async function getWinners(page: number, sort?: string, order?: string, limit = 1
   );
   const items = await response.json();
   return {
-    items: await Promise.all(items.map(async (winner: WinnersCar) => ({ ...winner, car: await getCar(winner.id) }))),
+    items: await Promise.all(items.map(async (winner: Winners) => ({ ...winner, car: await getCar(winner.id) }))),
     count: response.headers.get('X-Total-Count'),
   };
 }
@@ -104,7 +110,7 @@ async function deleteWinner(id: number) {
   return item;
 }
 
-async function createWinner(body: WinnersCar) {
+async function createWinner(body: Winners) {
   const response = await fetch(`${winners}`, {
     method: 'POST',
     body: JSON.stringify(body),
@@ -116,7 +122,7 @@ async function createWinner(body: WinnersCar) {
   return createdItem;
 }
 
-async function updateWinner(id: number, body: WinnersCar) {
+async function updateWinner(id: number, body: Winners) {
   const response = await fetch(`${winners}/${id}`, {
     method: 'PUT',
     body: JSON.stringify(body),
