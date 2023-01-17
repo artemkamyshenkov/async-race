@@ -14,6 +14,7 @@ export type Winners = {
   id: number;
   wins: number;
   time: number;
+  car?: CreateCar;
 };
 
 export type RaceState = {

@@ -3,6 +3,8 @@ import '@src/assets/styles/normalize.css';
 import { createBrowserHistory } from 'history';
 import type { Location } from 'history';
 import renderCars from '@src/race/cars/cars';
+import { renderWinners } from '@src/race/winners/winnersTable';
+import { updateWinnersState } from '@src/race/state/updateState';
 import { garagePage } from '../pages/garage/garage';
 import winnersPage from '../pages/winners/winners';
 
@@ -13,8 +15,10 @@ export default function router() {
     const btnWinners = document.querySelector('.btn__winners');
     const btnGarage = document.querySelector('.btn__garage');
 
-    btnWinners?.addEventListener('click', () => {
+    btnWinners?.addEventListener('click', async () => {
       history.push('/winners');
+      // await updateWinnersState();
+      await renderWinners();
     });
 
     btnGarage?.addEventListener('click', () => {

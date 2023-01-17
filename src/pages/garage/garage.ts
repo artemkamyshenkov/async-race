@@ -1,6 +1,7 @@
 import createDomElement from '@src/helpers/createDomElement';
 import { CreateCar } from '@src/types/types';
 import './garage.css';
+import showWinModal from '@src/widgets/modal/modalWin';
 
 export function garagePage() {
   const garage = document.createElement('section');
@@ -56,6 +57,8 @@ export function garagePage() {
   createDomElement(paginationButtons, 'button', 'pagination__btn pagination__btn-next', 'next');
 
   createDomElement(garageWrapper, 'ul', 'track__items track');
+
+  garage.append(showWinModal());
   return garage;
 }
 

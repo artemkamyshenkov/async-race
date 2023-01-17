@@ -2,6 +2,7 @@ import { startEngine, stopEngine, driveCar, saveWinner } from '@src/api/api';
 import { getDistanceRoad, animationRace } from '@src/race/cars/animation';
 import state from '@src/race/state/statePage';
 import { PromisesCars, CreateCar, WinnerCar, Callback } from '@src/types/types';
+import { updateWinnersState } from '../state/updateState';
 
 export default function race() {
   controlsRaceAll();
@@ -24,6 +25,8 @@ function controlRace() {
 }
 
 function controlsRaceAll() {
+  const modalWin: HTMLElement | null = document.querySelector('.modal');
+  const modalInfo: HTMLElement | null = document.querySelector('.modal__info');
   const controlsRaceAllHTML: HTMLElement | null = document.querySelector('.controls__race');
   const btnRaceStart: HTMLButtonElement | null = document.querySelector('.btn__race');
   const btnRaceReset: HTMLButtonElement | null = document.querySelector('.btn__reset');
@@ -34,12 +37,17 @@ function controlsRaceAll() {
       if (btnRaceStart) btnRaceStart.disabled = true;
       const { id, time } = await raceCars(startRace);
       await saveWinner(id, time);
+      if (modalWin) modalWin.classList.add('open');
+      const winner = state.cars.find((car: CreateCar) => car.id === id);
+      if (modalInfo) modalInfo.textContent = `The winner of this race was ${winner.name}, his time is ${time} sec.`;
       if (btnRaceReset) btnRaceReset.disabled = false;
+      updateWinnersState();
     }
 
     if ((target as HTMLElement).classList.contains('btn__reset')) {
       if (btnRaceReset) btnRaceReset.disabled = true;
       state.cars.map((car: CreateCar) => stopRace(car.id));
+      if (modalWin) modalWin.classList.remove('open');
       if (btnRaceStart) btnRaceStart.disabled = false;
     }
   });
