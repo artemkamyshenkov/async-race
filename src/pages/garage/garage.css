@@ -1,4 +1,7 @@
 /* Garage*/
+.garage__wrapper {
+  position: relative;
+}
 .controls__create,
 .controls__edit {
   margin: 1rem 0;

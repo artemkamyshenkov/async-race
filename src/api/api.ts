@@ -73,7 +73,7 @@ async function driveCar(id: number) {
   return response.status !== 200 ? { succees: false } : { ...(await response.json()) };
 }
 
-async function getSortWinners(sort: string, order: string) {
+function getSortWinners(sort: string, order: string) {
   if (sort && order) {
     return `&_sort=${sort}&_order=${order}`;
   }
