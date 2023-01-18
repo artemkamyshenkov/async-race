@@ -8,5 +8,6 @@ export default function showWinModal() {
 
   createDomElement(modalBody, 'h3', 'modal__title', `Champion`);
   createDomElement(modalBody, 'div', 'modal__info');
+  createDomElement(modalBody, 'button', 'controls__btn  btn__modal', 'congratulations');
   return modalWrapper;
 }

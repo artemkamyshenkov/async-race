@@ -2,11 +2,13 @@ import state from '@src/race/state/statePage';
 import { renderWinnerTableCell } from '@src/pages/winners/winners';
 import paginationWinners from '@src/race/pagination/paginationWinners';
 import { updateWinnersState } from '../state/updateState';
+import sortWinners from './winnersSort';
 
 export default async function winnersTable() {
   paginationWinners();
   renderWinners();
   updateWinnersState();
+  sortWinners();
 }
 
 export function renderWinners() {

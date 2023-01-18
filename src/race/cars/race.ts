@@ -32,7 +32,6 @@ function controlsRaceAll() {
   const btnRaceReset: HTMLButtonElement | null = document.querySelector('.btn__reset');
   controlsRaceAllHTML?.addEventListener('click', async (e: Event) => {
     const { target } = e;
-
     if ((target as HTMLElement).classList.contains('btn__race')) {
       if (btnRaceStart) btnRaceStart.disabled = true;
       const { id, time } = await raceCars(startRace);
@@ -41,7 +40,8 @@ function controlsRaceAll() {
       const winner = state.cars.find((car: CreateCar) => car.id === id);
       if (modalInfo) modalInfo.textContent = `The winner of this race was ${winner.name}, his time is ${time} sec.`;
       if (btnRaceReset) btnRaceReset.disabled = false;
-      updateWinnersState();
+      closeWinModal();
+      await updateWinnersState();
     }
 
     if ((target as HTMLElement).classList.contains('btn__reset')) {
@@ -110,4 +110,14 @@ async function raceCars(action: Callback) {
     state.cars.map((car: CreateCar) => car.id)
   );
   return winCar;
+}
+
+function closeWinModal() {
+  const closeModalBtn: HTMLButtonElement | null = document.querySelector('.btn__modal');
+  const modal: HTMLElement | null = document.querySelector('.modal');
+  closeModalBtn?.addEventListener('click', () => {
+    if (modal?.classList.contains('open')) {
+      modal.classList.remove('open');
+    }
+  });
 }

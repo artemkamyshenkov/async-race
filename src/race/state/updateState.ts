@@ -1,7 +1,7 @@
 import state from '@src/race/state/statePage';
 import { getCars, getWinners } from '@src/api/api';
 
-export default async function updateGarageState() {
+export async function updateGarageState() {
   const { items, count } = await getCars(state.carsPage);
   state.cars = items;
   state.carsCount = count;
@@ -32,7 +32,7 @@ export default async function updateGarageState() {
 }
 
 export async function updateWinnersState() {
-  const { items, count } = await getWinners(state.winnersPage);
+  const { items, count } = await getWinners(state.winnersPage, state.sortBy, state.sortOrder);
   state.winners = items;
   state.winnersCount = count;
 

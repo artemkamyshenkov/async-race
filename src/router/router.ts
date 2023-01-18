@@ -5,7 +5,10 @@ import type { Location } from 'history';
 import renderCars from '@src/race/cars/cars';
 import { renderWinners } from '@src/race/winners/winnersTable';
 import { updateWinnersState } from '@src/race/state/updateState';
-import { garagePage } from '../pages/garage/garage';
+import paginationWinners from '@src/race/pagination/paginationWinners';
+import sortWinners from '@src/race/winners/winnersSort';
+import { garagePage } from '@src/pages/garage/garage';
+import createMainPage from '@src/widgets/main/main';
 import winnersPage from '../pages/winners/winners';
 
 export default function router() {
@@ -17,8 +20,10 @@ export default function router() {
 
     btnWinners?.addEventListener('click', async () => {
       history.push('/winners');
-      // await updateWinnersState();
-      await renderWinners();
+      await updateWinnersState();
+      renderWinners();
+      paginationWinners();
+      sortWinners();
     });
 
     btnGarage?.addEventListener('click', () => {
@@ -41,9 +46,7 @@ export default function router() {
     const contentContainerHTML = document.querySelector('.content');
     const route = ROUTES[location.pathname];
     if (route) {
-      if (contentContainerHTML) {
-        contentContainerHTML.innerHTML = '';
-      }
+      if (contentContainerHTML) contentContainerHTML.innerHTML = '';
       contentContainerHTML?.append(route(location));
     }
   }
