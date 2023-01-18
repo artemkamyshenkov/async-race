@@ -13,9 +13,8 @@ const state = {
   animation: {
     id: null,
   },
-  view: 'garage',
-  sortBy: null,
-  sortOrder: null,
+  sortBy: '',
+  sortOrder: '',
 };
 
 export default state;

@@ -49,3 +49,27 @@
 .pagination__btn-winner-prev {
   margin-right: 1rem;
 }
+
+.table__data_wins,
+.table__data_time {
+  background: inherit;
+  color: #fff;
+  width: 2rem;
+  height: 2rem;
+}
+
+.wins__sort_asc {
+  transform: rotate(180deg);
+}
+
+.time__sort_asc {
+  transform: rotate(180deg);
+}
+
+.wins__sort_desc {
+  transform: rotate(0deg);
+}
+
+.time__sort_desc {
+  transform: rotate(0deg);
+}

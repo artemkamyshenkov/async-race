@@ -1,10 +1,11 @@
 import state from '@src/race/state/statePage';
-import { createCar, deleteCar, deleteWinner, getCars, getCar, updateCar } from '@src/api/api';
+import { createCar, deleteCar, deleteWinner, getCar, updateCar } from '@src/api/api';
 import { renderCar } from '@src/pages/garage/garage';
 import { CreateCar } from '@src/types/types';
-import updateGarageState from '@src/race/state/updateState';
+import { updateGarageState } from '@src/race/state/updateState';
 import paginationGarage from '@src/race/pagination/paginationGarage';
 import generateRandomCars from '@src/race/cars/generateCars';
+import race from './race';
 
 export default async function garageCar() {
   paginationGarage();
@@ -14,6 +15,7 @@ export default async function garageCar() {
   editCarBtn();
   updateGarageState();
   generateRandomCars();
+  race();
 }
 
 export function renderCars() {
@@ -37,7 +39,7 @@ function createCarBtn() {
     e.preventDefault();
     const carName = createInputHTML?.value;
     const carColor = colorInputHTML?.value;
-    const carId = Number(state.carsCount);
+    const carId = Number(state.cars.id);
     const body = {
       id: carId + 1,
       name: carName as string,

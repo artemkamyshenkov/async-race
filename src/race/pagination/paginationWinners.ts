@@ -1,5 +1,5 @@
 import state from '@src/race/state/statePage';
-import updateWinnersState from '@src/race/state/updateState';
+import { updateWinnersState } from '@src/race/state/updateState';
 import { renderWinners } from '@src/race/winners/winnersTable';
 
 export default function paginationWinners() {
@@ -14,7 +14,6 @@ export default function paginationWinners() {
       await updateWinnersState();
       (winnersTableHTML as HTMLElement).innerHTML = '';
       renderWinners();
-      console.log(state);
     }
 
     if ((target as HTMLElement).classList.contains('pagination__btn-winner-prev')) {
@@ -22,7 +21,6 @@ export default function paginationWinners() {
       await updateWinnersState();
       (winnersTableHTML as HTMLElement).innerHTML = '';
       renderWinners();
-      console.log(state);
     }
   });
 }

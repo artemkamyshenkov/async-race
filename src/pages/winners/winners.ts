@@ -1,7 +1,7 @@
 import createDomElement from '@src/helpers/createDomElement';
 import '@src/pages/winners/winners.css';
 import { Winners } from '@src/types/types';
-import { renderCarImg } from '../garage/garage';
+import { renderCarImg } from '@src/pages/garage/garage';
 
 export default function winnersPage() {
   const winners = document.createElement('section');
@@ -33,8 +33,11 @@ export default function winnersPage() {
   createDomElement(winnerTableRow, 'th', 'table__title', 'Number');
   createDomElement(winnerTableRow, 'th', 'table__title', 'Car');
   createDomElement(winnerTableRow, 'th', 'table__title', 'Name');
-  createDomElement(winnerTableRow, 'th', 'table__title', 'Wins');
-  createDomElement(winnerTableRow, 'th', 'table__title', 'Time');
+  const tableRowWins = createDomElement(winnerTableRow, 'th', 'table__title', 'Wins');
+  const tableRowTime = createDomElement(winnerTableRow, 'th', 'table__title', 'Time');
+
+  createDomElement(tableRowWins, 'button', 'table__data_wins wins__sort_asc', '^');
+  createDomElement(tableRowTime, 'button', 'table__data_time time__sort_asc', '^');
 
   createDomElement(winnerTable, 'tbody', 'table__body');
   return winners;
@@ -49,7 +52,6 @@ export function renderWinnerTableCell(winner: Winners, index: number) {
   tableCar.innerHTML = `${renderCarImg(winner.car !== undefined ? winner.car?.color : '#fff')}`;
   createDomElement(tableRow, 'td', 'table__data', `${winner.car?.name}`);
   createDomElement(tableRow, 'td', 'table__data', `${winner.wins}`);
-  createDomElement(tableRow, 'td', 'table__data', `${winner.time} sec.`);
-
+  createDomElement(tableRow, 'td', 'table__data table__data_time', `${winner.time} sec.`);
   return tableRow;
 }

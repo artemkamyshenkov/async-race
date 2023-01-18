@@ -1,7 +1,7 @@
 import { createCar } from '@src/api/api';
 import state from '@src/race/state/statePage';
 import { renderCars } from '@src/race/cars/cars';
-import updateGarageState from '@src/race/state/updateState';
+import { updateGarageState } from '@src/race/state/updateState';
 
 export default function getRandomCars() {
   const randomBtn: HTMLButtonElement | null = document.querySelector('.btn__generate');
