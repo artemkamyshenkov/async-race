@@ -38,7 +38,8 @@ function controlsRaceAll() {
       await saveWinner(id, time);
       if (modalWin) modalWin.classList.add('open');
       const winner = state.cars.find((car: CreateCar) => car.id === id);
-      if (modalInfo) modalInfo.textContent = `The winner of this race was ${winner.name}, his time is ${time} sec.`;
+      if (modalInfo)
+        modalInfo.textContent = `The winner of this race was Vin Diesel on his ${winner.name}, his time is ${time} sec.`;
       if (btnRaceReset) btnRaceReset.disabled = false;
       closeWinModal();
       await updateWinnersState();
