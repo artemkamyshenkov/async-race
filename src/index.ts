@@ -6,6 +6,6 @@ import createMainPage from './widgets/main/main';
 import winnersTable from './race/winners/winnersTable';
 
 createMainPage();
-router(); // TODO: исправить рендер без работы сервера
+router();
 winnersTable();
 garageCar();

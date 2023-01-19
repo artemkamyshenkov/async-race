@@ -15,7 +15,7 @@ export function renderWinners() {
   const winnersTableHTML: HTMLElement | null = document.querySelector('.table__body');
   const winnersCount: HTMLElement | null = document.querySelector('.winner__count');
   if (winnersCount) winnersCount.textContent = `${state.winnersCount}`;
-  state.winners.forEach((winner, index) => {
+  state.winners.forEach((winner, index: number) => {
     winnersTableHTML?.append(renderWinnerTableCell(winner, index));
   });
 }

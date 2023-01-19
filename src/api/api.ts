@@ -6,12 +6,24 @@ const engine = `${baseURL}/engine`;
 const winners = `${baseURL}/winners`;
 
 async function getCars(page: number, limit = 7) {
-  const response = await fetch(`${garage}?_page=${page}&_limit=${limit}`);
+  const errHTML: HTMLElement | null = document.querySelector('.error__wrapper');
+  try {
+    if (errHTML) errHTML.style.display = 'none';
+    const response = await fetch(`${garage}?_page=${page}&_limit=${limit}`);
+    return {
+      items: await response.json(),
+      count: response.headers.get('X-Total-Count'),
+    };
+  } catch (err) {
+    if (errHTML) errHTML.style.display = 'block';
+    console.log('Failed to connect');
+  }
   return {
-    items: await response.json(),
-    count: response.headers.get('X-Total-Count'),
+    items: [],
+    count: 0,
   };
 }
+
 async function getCar(id: number) {
   const response = await fetch(`${garage}/${id}`);
   const item = response.json();
@@ -26,7 +38,7 @@ async function createCar(body: CreateCar) {
       'Content-type': 'application/json',
     },
   });
-  const car = response.json();
+  const car = await response.json();
   return car;
 }
 
@@ -81,14 +93,22 @@ function getSortWinners(sort: string, order: string) {
 }
 
 async function getWinners(page: number, sort?: string, order?: string, limit = 10) {
-  const response = await fetch(
-    `${winners}?_page=${page}&_limit=${limit}${getSortWinners(sort as string, order as string)}`
-  );
-  const items = await response.json();
-  return {
-    items: await Promise.all(items.map(async (winner: Winners) => ({ ...winner, car: await getCar(winner.id) }))),
-    count: response.headers.get('X-Total-Count'),
-  };
+  try {
+    const response = await fetch(
+      `${winners}?_page=${page}&_limit=${limit}${getSortWinners(sort as string, order as string)}`
+    );
+    const items = await response.json();
+    return {
+      items: await Promise.all(items.map(async (winner: Winners) => ({ ...winner, car: await getCar(winner.id) }))),
+      count: response.headers.get('X-Total-Count'),
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      items: [],
+      count: 0,
+    };
+  }
 }
 
 async function getWinner(id: number) {
