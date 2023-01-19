@@ -35,6 +35,19 @@ function createCarBtn() {
   const colorInputHTML: HTMLInputElement | null = document.querySelector('.create__color');
   const trackWrapperHTML: HTMLElement | null = document.querySelector('.track__items');
 
+  // Сохранение текста input в local storage
+  createInputHTML?.addEventListener('input', () => {
+    localStorage.setItem('carName', `${createInputHTML?.value}`);
+  });
+
+  colorInputHTML?.addEventListener('input', () => {
+    localStorage.setItem('carColor', `${colorInputHTML?.value}`);
+  });
+
+  if (createInputHTML) createInputHTML.value = `${localStorage.getItem('carName') || ''}`;
+  if (colorInputHTML) colorInputHTML.value = `${localStorage.getItem('carColor') || ''}`;
+
+  // отправка формы с названием и цветом авто
   formCreateHTML?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const carName = createInputHTML?.value;
@@ -49,10 +62,13 @@ function createCarBtn() {
     await updateGarageState();
     (trackWrapperHTML as HTMLElement).innerHTML = '';
     renderCars();
+    localStorage.removeItem('carName');
+    localStorage.removeItem('carColor');
     if (createInputHTML) {
       createInputHTML.value = '';
       createInputHTML.focus();
     }
+    if (colorInputHTML) colorInputHTML.value = '';
   });
 }
 

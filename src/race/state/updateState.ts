@@ -41,7 +41,7 @@ export async function updateWinnersState() {
   const currentPage: HTMLElement | null = document.querySelector('.pagination__winner-current');
   const totalPages: HTMLElement | null = document.querySelector('.pagination__winner-total');
 
-  if (totalPages) totalPages.textContent = `${Math.ceil(Number(state.winnersCount) / 10)}`;
+  if (totalPages) totalPages.textContent = `${Math.ceil(Number(state.winnersCount) / 10) || '1'}`;
   if (currentPage) currentPage.textContent = `${state.winnersPage}`;
 
   if (Number(state.winnersPage * 10) < Number(state.winnersCount)) {

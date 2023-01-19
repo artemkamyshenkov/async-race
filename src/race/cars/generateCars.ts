@@ -67,7 +67,7 @@ function getRandomName() {
 
 function getRandomCar() {
   const count = 100;
-  const carId = Number(state.carsCount) + 1;
+  const carId = Number(state.cars.id) + 1;
   return new Array(count).fill(1).map((_, i) => {
     return { id: carId + i, name: getRandomName(), color: getRandomColor() };
   });
