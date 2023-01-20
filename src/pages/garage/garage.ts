@@ -92,7 +92,7 @@ export function renderCar(car: CreateCar) {
     { key: 'id', value: `car-${car.id}` },
   ]);
   trackAnimation.innerHTML = `${renderCarImg(car.color)}`;
-  const vinIcon = createDomElement(trackAnimation, 'div', 'vin__icon');
+  createDomElement(trackAnimation, 'div', 'vin__icon');
   return trackItem;
 }
 

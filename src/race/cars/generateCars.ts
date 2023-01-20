@@ -6,6 +6,7 @@ import { updateGarageState } from '@src/race/state/updateState';
 export default function getRandomCars() {
   const randomBtn: HTMLButtonElement | null = document.querySelector('.btn__generate');
   const trackWrapperHTML: HTMLElement | null = document.querySelector('.track__items');
+
   randomBtn?.addEventListener('click', async () => {
     randomBtn.disabled = true;
     const randomCars = getRandomCar();
