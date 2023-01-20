@@ -11,8 +11,10 @@ export default function race() {
 
 function controlRace() {
   const trackWrapperHTML: HTMLElement | null = document.querySelector('.track__items');
+
   trackWrapperHTML?.addEventListener('click', async (e: Event) => {
     const { target } = e;
+
     if ((target as HTMLElement).classList.contains('road__btn-start')) {
       const id = Number((target as HTMLElement).id.split('road__btn-start-')[1]);
       startRace(id);
@@ -30,8 +32,10 @@ function controlsRaceAll() {
   const controlsRaceAllHTML: HTMLElement | null = document.querySelector('.controls__race');
   const btnRaceStart: HTMLButtonElement | null = document.querySelector('.btn__race');
   const btnRaceReset: HTMLButtonElement | null = document.querySelector('.btn__reset');
+
   controlsRaceAllHTML?.addEventListener('click', async (e: Event) => {
     const { target } = e;
+
     if ((target as HTMLElement).classList.contains('btn__race')) {
       if (btnRaceStart) btnRaceStart.disabled = true;
       const { id, time } = await raceCars(startRace);

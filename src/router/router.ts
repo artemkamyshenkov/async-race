@@ -8,7 +8,6 @@ import { updateWinnersState } from '@src/race/state/updateState';
 import paginationWinners from '@src/race/pagination/paginationWinners';
 import sortWinners from '@src/race/winners/winnersSort';
 import { garagePage } from '@src/pages/garage/garage';
-import createMainPage from '@src/widgets/main/main';
 import winnersPage from '../pages/winners/winners';
 
 export default function router() {

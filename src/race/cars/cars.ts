@@ -5,7 +5,7 @@ import { CreateCar } from '@src/types/types';
 import { updateGarageState } from '@src/race/state/updateState';
 import paginationGarage from '@src/race/pagination/paginationGarage';
 import generateRandomCars from '@src/race/cars/generateCars';
-import race from './race';
+import race from '@src/race/cars/race';
 
 export default async function garageCar() {
   paginationGarage();
@@ -21,9 +21,8 @@ export default async function garageCar() {
 export function renderCars() {
   const trackItemsHTML: HTMLElement | null = document.querySelector('.track__items');
   const carCount: HTMLElement | null = document.querySelector('.info__count');
-  if (carCount) {
-    carCount.textContent = `${state.carsCount}`;
-  }
+  if (carCount) carCount.textContent = `${state.carsCount}`;
+
   state.cars.forEach((car: CreateCar) => {
     trackItemsHTML?.append(renderCar(car));
   });
@@ -47,7 +46,6 @@ function createCarBtn() {
   if (createInputHTML) createInputHTML.value = `${localStorage.getItem('carName') || ''}`;
   if (colorInputHTML) colorInputHTML.value = `${localStorage.getItem('carColor') || '#000000'}`;
 
-  // отправка формы с названием и цветом авто
   formCreateHTML?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const carName = createInputHTML?.value;

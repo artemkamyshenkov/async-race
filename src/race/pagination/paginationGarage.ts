@@ -16,6 +16,7 @@ export default function paginationGarage() {
       await updateGarageState();
       (trackItemsHTML as HTMLElement).innerHTML = '';
       renderCars();
+
       if (btnRace?.hasAttribute('disabled')) btnRace.disabled = false;
       if (!btnReset?.hasAttribute('disabled')) (btnReset as HTMLButtonElement).disabled = true;
     }
@@ -25,6 +26,7 @@ export default function paginationGarage() {
       await updateGarageState();
       (trackItemsHTML as HTMLElement).innerHTML = '';
       renderCars();
+
       if (btnRace?.hasAttribute('disabled')) btnRace.disabled = false;
       if (!btnReset?.hasAttribute('disabled')) (btnReset as HTMLButtonElement).disabled = true;
     }
