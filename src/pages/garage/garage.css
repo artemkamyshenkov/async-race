@@ -180,3 +180,15 @@ html input[disabled] {
   left: 3.3rem;
   z-index: 10;
 }
+
+.vin__icon {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.9rem;
+  background-image: url(../../assets/icon/vin.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 4.5rem;
+  height: 4.5rem;
+}

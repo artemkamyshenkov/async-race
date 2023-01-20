@@ -45,7 +45,7 @@ function createCarBtn() {
   });
 
   if (createInputHTML) createInputHTML.value = `${localStorage.getItem('carName') || ''}`;
-  if (colorInputHTML) colorInputHTML.value = `${localStorage.getItem('carColor') || ''}`;
+  if (colorInputHTML) colorInputHTML.value = `${localStorage.getItem('carColor') || '#000000'}`;
 
   // отправка формы с названием и цветом авто
   formCreateHTML?.addEventListener('submit', async (e) => {
@@ -68,7 +68,7 @@ function createCarBtn() {
       createInputHTML.value = '';
       createInputHTML.focus();
     }
-    if (colorInputHTML) colorInputHTML.value = '';
+    if (colorInputHTML) colorInputHTML.value = '#000000';
   });
 }
 

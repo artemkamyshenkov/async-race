@@ -1,0 +1,12 @@
+.error__wrapper {
+  display: none;
+  margin-top: 3rem;
+}
+
+.error__text {
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
