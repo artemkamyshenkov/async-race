@@ -1,0 +1,42 @@
+.footer {
+  border-top: 1px solid #fff;
+}
+
+.footer__container {
+  padding: 1rem;
+}
+
+.footer__social {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item__icon_img,
+.item__icon_logo {
+  width: 3rem;
+  height: 3rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  cursor: pointer;
+}
+
+.item__icon_img {
+  background-image: url(../../assets/icon/github-logo.svg);
+}
+
+.item__icon_logo {
+  background-image: url(../../assets/icon/rs-school-js.svg);
+}
+
+.title__year {
+  font-size: 0.7rem;
+}
+
+.footer__logo {
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+}

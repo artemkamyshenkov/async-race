@@ -1,0 +1,75 @@
+.winner__wrapper {
+  padding: 2rem 1rem;
+}
+
+.winner__info {
+  margin-bottom: 2rem;
+}
+.winners__table {
+  border: 0.1rem solid #fff;
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+}
+
+.winners__head {
+  border: 0.1rem solid #fff;
+  padding: 8rem;
+  width: 20%;
+}
+
+.table__data {
+  border: 0.1rem solid #fff;
+  text-align: left;
+  padding: 0.8rem;
+  width: 20%;
+}
+
+.table__data svg {
+  height: 4rem;
+  width: 100%;
+}
+
+.table__title {
+  border: 0.1rem solid #fff;
+  padding: 2rem 0.8rem;
+}
+
+.winner__title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.pagination__title_winner {
+  margin-bottom: 1rem;
+}
+
+.pagination__btn-winner-prev {
+  margin-right: 1rem;
+}
+
+.table__data_wins,
+.table__data_time {
+  background: inherit;
+  color: #fff;
+  width: 2rem;
+  height: 2rem;
+}
+
+.wins__sort_asc {
+  transform: rotate(180deg);
+}
+
+.time__sort_asc {
+  transform: rotate(180deg);
+}
+
+.wins__sort_desc {
+  transform: rotate(0deg);
+}
+
+.time__sort_desc {
+  transform: rotate(0deg);
+}
