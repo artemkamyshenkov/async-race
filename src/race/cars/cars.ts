@@ -91,12 +91,12 @@ function editCarBtn() {
   const editColorHTML: HTMLInputElement | null = document.querySelector('.edit__color');
   const editBtnHTML: HTMLButtonElement | null = document.querySelector('.edit__btn');
   const formEditHTML: HTMLFormElement | null = document.querySelector('.controls__edit');
-
+  let carId: number;
   trackWrapperHTML?.addEventListener('click', async (e: Event) => {
     const { target } = e;
     if ((target as HTMLElement).classList.contains('info__btn-edit')) {
-      const editCarId = Number((target as HTMLElement).id.split('info__btn-edit-')[1]);
-      const editCar = await getCar(editCarId);
+      carId = Number((target as HTMLElement).id.split('info__btn-edit-')[1]);
+      const editCar = await getCar(carId);
       if (editInputHTML) {
         editInputHTML.disabled = false;
         editInputHTML.value = editCar.name;
@@ -108,17 +108,20 @@ function editCarBtn() {
       if (editBtnHTML) {
         editBtnHTML.disabled = false;
       }
-      formEditHTML?.addEventListener('submit', async () => {
-        e.preventDefault();
-        const carName = editInputHTML?.value;
-        const carColor = editColorHTML?.value;
-        const body = {
-          id: editCarId,
-          name: carName as string,
-          color: carColor as string,
-        };
-        await updateCar(editCarId, body);
-      });
     }
+  });
+  formEditHTML?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const carName = editInputHTML?.value;
+    const carColor = editColorHTML?.value;
+    const body = {
+      id: carId,
+      name: carName as string,
+      color: carColor as string,
+    };
+    await updateCar(carId, body);
+    await updateGarageState();
+    (trackWrapperHTML as HTMLElement).innerHTML = '';
+    renderCars();
   });
 }
