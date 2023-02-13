@@ -19,10 +19,10 @@
 
 ### Install dependencies:
 `$ npm install`
-`For the application to work correctly, you need to fork the backend repository and run it`
 
 ### Running the app
 `$ npm run start`
+`For the application to work correctly, you need to fork the backend repository and run it`
 
 ### Prepare for production
 `$ npm run build`
